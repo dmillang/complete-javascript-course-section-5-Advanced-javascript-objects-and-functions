@@ -1,2 +1,2 @@
 # complete-javascript-course-section-5-Advanced-javascript-objects-and-functions
-## Advanced notions on Objects and Functions in JS from from The Complete JavaScript Course 2019: Build Real Projects! (Udemy Course)
+Advanced notions on Objects and Functions in JS from from The Complete JavaScript Course 2019: Build Real Projects! (Udemy Course)

@@ -78,36 +78,74 @@
 
 // Primitives vs. Objects
 
-// Primitives
-// Variables of a primitve hold the data DOES NOT reference it
-var a = 23;
-var b = a;
-a = 46;
-console.log(a, b);
+// // Primitives
+// // Variables of a primitve hold the data DOES NOT reference it
+// var a = 23;
+// var b = a;
+// a = 46;
+// console.log(a, b);
 
-// Objects
-// Non-primitives (aka Objects) DO reference their data
-obj1 = {
-    name: 'John',
-    year: 1990
-};
+// // Objects
+// // Non-primitives (aka Objects) DO reference their data
+// obj1 = {
+//     name: 'John',
+//     year: 1990
+// };
 
-obj2 = obj1;
-obj1.year = 1985;
-console.log(obj2.year);
+// obj2 = obj1;
+// obj1.year = 1985;
+// console.log(obj2.year);
 
-// Functions
-var age = 27;
-var obj = {
-    name: 'Mike',
-    city: 'Lesbon',
-};
+// // Functions
+// var age = 27;
+// var obj = {
+//     name: 'Mike',
+//     city: 'Lesbon',
+// };
 
-function change(a, b) {
-    a = 30,
-    b.city = 'London'
-};
+// function change(a, b) {
+//     a = 30,
+//     b.city = 'London'
+// };
 
-change(a,obj);
-console.log(age);
-console.log(obj.city);
+// change(a,obj);
+// console.log(age);
+// console.log(obj.city);
+
+
+
+// First Class Functions: Passing Functions as Arguments
+var years = [1990, 1972, 1954, 2003, 2010];
+
+var calcArr = function (arr, fn) {
+    arrRes = [];
+    for (var i = 0; i < arr.length; i++) {
+        arrRes.push(fn(arr[i]));
+    }
+    return arrRes;
+}
+
+function calcAge(el) {
+    return 2019 - el;
+}
+
+function isFullAge(el) {
+    return el >= 18;
+}
+
+var ages = calcArr(years, calcAge);
+console.log(ages);
+
+var fullAges = calcArr(ages, isFullAge);
+console.log(fullAges);
+
+function maxHeartRate(el) {
+    if (el >= 18 && el <= 81) {
+        return Math.round(206.9 - (0.67 * el));
+    } else {
+        return -1;
+    }
+}
+
+var maxHeartRates = calcArr(ages, maxHeartRate);
+console.log(maxHeartRates);

@@ -53,24 +53,61 @@
 
 
 // Creating Objects: Object.create
+// var personProto = {
+//     calcAge: function() {
+//         console.log(2019 - this.yearOfBirth);
+//     },
+// };
 
-var personProto = {
-    calcAge: function() {
-        console.log(2019 - this.yearOfBirth);
-    },
+// var john = Object.create(personProto);
+// john.name = 'John';
+// john.lastName = 'Doe';
+// john.yearOfBirth = 1990;
+// john.job = 'teacher';
+// john.calcAge();
+
+// var jane = Object.create(personProto,
+// {
+//     name: { value: 'Jane'},
+//     lastName: { value: 'Smith'},
+//     yearOfBirth: { value: 1985},
+//     job: { value: 'doctor'},
+// });
+
+
+
+// Primitives vs. Objects
+
+// Primitives
+// Variables of a primitve hold the data DOES NOT reference it
+var a = 23;
+var b = a;
+a = 46;
+console.log(a, b);
+
+// Objects
+// Non-primitives (aka Objects) DO reference their data
+obj1 = {
+    name: 'John',
+    year: 1990
 };
 
-var john = Object.create(personProto);
-john.name = 'John';
-john.lastName = 'Doe';
-john.yearOfBirth = 1990;
-john.job = 'teacher';
-john.calcAge();
+obj2 = obj1;
+obj1.year = 1985;
+console.log(obj2.year);
 
-var jane = Object.create(personProto,
-{
-    name: { value: 'Jane'},
-    lastName: { value: 'Smith'},
-    yearOfBirth: { value: 1985},
-    job: { value: 'doctor'},
-});
+// Functions
+var age = 27;
+var obj = {
+    name: 'Mike',
+    city: 'Lesbon',
+};
+
+function change(a, b) {
+    a = 30,
+    b.city = 'London'
+};
+
+change(a,obj);
+console.log(age);
+console.log(obj.city);

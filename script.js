@@ -1,28 +1,28 @@
 // Function Constructors
 
-var Person = function(name, yearOfBirth, job) {
-        this.name = name;
-        this.yearOfBirth = yearOfBirth;
-        this.job = job;
-}
+// var Person = function(name, yearOfBirth, job) {
+//         this.name = name;
+//         this.yearOfBirth = yearOfBirth;
+//         this.job = job;
+// }
 
-Person.prototype.calcAge = function() {
-    console.log(2019 - this.yearOfBirth);
-};
+// Person.prototype.calcAge = function() {
+//     console.log(2019 - this.yearOfBirth);
+// };
 
-Person.prototype.lastName = 'Smith';
+// Person.prototype.lastName = 'Smith';
 
-var john = new Person ('John', 1990, 'teacher');
-var jane = new Person ('Jane', 1996, 'designer');
-var mark = new Person ('Mark', 1943, 'retired');
+// var john = new Person ('John', 1990, 'teacher');
+// var jane = new Person ('Jane', 1996, 'designer');
+// var mark = new Person ('Mark', 1943, 'retired');
 
-john.calcAge();
-jane.calcAge();
-mark.calcAge();
+// john.calcAge();
+// jane.calcAge();
+// mark.calcAge();
 
-console.log(john.lastName);
-console.log(jane.lastName);
-console.log(mark.lastName);
+// console.log(john.lastName);
+// console.log(jane.lastName);
+// console.log(mark.lastName);
 
 // Playing with constructor functions and instances
 
@@ -50,3 +50,27 @@ console.log(mark.lastName);
 // seat.doesPollute();
 // suzuki.doesPollute();
 
+
+
+// Creating Objects: Object.create
+
+var personProto = {
+    calcAge: function() {
+        console.log(2019 - this.yearOfBirth);
+    },
+};
+
+var john = Object.create(personProto);
+john.name = 'John';
+john.lastName = 'Doe';
+john.yearOfBirth = 1990;
+john.job = 'teacher';
+john.calcAge();
+
+var jane = Object.create(personProto,
+{
+    name: { value: 'Jane'},
+    lastName: { value: 'Smith'},
+    yearOfBirth: { value: 1985},
+    job: { value: 'doctor'},
+});

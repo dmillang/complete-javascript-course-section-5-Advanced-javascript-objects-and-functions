@@ -115,6 +115,7 @@
 
 
 // First Class Functions: Passing Functions as Arguments
+
 var years = [1990, 1972, 1954, 2003, 2010];
 
 var calcArr = function (arr, fn) {
@@ -149,3 +150,48 @@ function maxHeartRate(el) {
 
 var maxHeartRates = calcArr(ages, maxHeartRate);
 console.log(maxHeartRates);
+
+
+
+// First Class Functions: Functions Returning Functions
+
+function interviewQuestion(job) {
+    if (job === 'designer') {
+        return function(name) {
+            console.log(name + ' can you explain what UX is?');
+        }
+    } else if (job === 'teacher') {
+        return function(name) {
+            console.log('What subject do you teach ' + name + "?");
+        }
+    } else {
+        return function(name) {
+            console.log(name + ' what do you do for a living?');
+        }
+    }
+}
+
+var designerQuestion = interviewQuestion('designer');
+var teacherQuestion = interviewQuestion('teacher');
+
+var john = {
+    name: 'John',
+    lastName: 'Doe'
+}
+
+var jane = {
+    name: 'Jane',
+    lastName: 'Smith'
+}
+
+var mike = {
+    name: 'Mike',
+    lastName: 'Dune'
+}
+
+designerQuestion(jane.name);
+teacherQuestion(john.name);
+
+// Another solution: call the two functions at the same time
+interviewQuestion('unknown')(mike.name);
+interviewQuestion('designer')('Joanne');

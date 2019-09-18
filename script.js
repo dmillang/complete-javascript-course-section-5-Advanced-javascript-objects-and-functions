@@ -116,82 +116,104 @@
 
 // First Class Functions: Passing Functions as Arguments
 
-var years = [1990, 1972, 1954, 2003, 2010];
+// var years = [1990, 1972, 1954, 2003, 2010];
 
-var calcArr = function (arr, fn) {
-    arrRes = [];
-    for (var i = 0; i < arr.length; i++) {
-        arrRes.push(fn(arr[i]));
-    }
-    return arrRes;
-}
+// var calcArr = function (arr, fn) {
+//     arrRes = [];
+//     for (var i = 0; i < arr.length; i++) {
+//         arrRes.push(fn(arr[i]));
+//     }
+//     return arrRes;
+// }
 
-function calcAge(el) {
-    return 2019 - el;
-}
+// function calcAge(el) {
+//     return 2019 - el;
+// }
 
-function isFullAge(el) {
-    return el >= 18;
-}
+// function isFullAge(el) {
+//     return el >= 18;
+// }
 
-var ages = calcArr(years, calcAge);
-console.log(ages);
+// var ages = calcArr(years, calcAge);
+// console.log(ages);
 
-var fullAges = calcArr(ages, isFullAge);
-console.log(fullAges);
+// var fullAges = calcArr(ages, isFullAge);
+// console.log(fullAges);
 
-function maxHeartRate(el) {
-    if (el >= 18 && el <= 81) {
-        return Math.round(206.9 - (0.67 * el));
-    } else {
-        return -1;
-    }
-}
+// function maxHeartRate(el) {
+//     if (el >= 18 && el <= 81) {
+//         return Math.round(206.9 - (0.67 * el));
+//     } else {
+//         return -1;
+//     }
+// }
 
-var maxHeartRates = calcArr(ages, maxHeartRate);
-console.log(maxHeartRates);
+// var maxHeartRates = calcArr(ages, maxHeartRate);
+// console.log(maxHeartRates);
 
 
 
 // First Class Functions: Functions Returning Functions
 
-function interviewQuestion(job) {
-    if (job === 'designer') {
-        return function(name) {
-            console.log(name + ' can you explain what UX is?');
-        }
-    } else if (job === 'teacher') {
-        return function(name) {
-            console.log('What subject do you teach ' + name + "?");
-        }
-    } else {
-        return function(name) {
-            console.log(name + ' what do you do for a living?');
-        }
-    }
-}
+// function interviewQuestion(job) {
+//     if (job === 'designer') {
+//         return function(name) {
+//             console.log(name + ' can you explain what UX is?');
+//         }
+//     } else if (job === 'teacher') {
+//         return function(name) {
+//             console.log('What subject do you teach ' + name + "?");
+//         }
+//     } else {
+//         return function(name) {
+//             console.log(name + ' what do you do for a living?');
+//         }
+//     }
+// }
 
-var designerQuestion = interviewQuestion('designer');
-var teacherQuestion = interviewQuestion('teacher');
+// var designerQuestion = interviewQuestion('designer');
+// var teacherQuestion = interviewQuestion('teacher');
 
-var john = {
-    name: 'John',
-    lastName: 'Doe'
-}
+// var john = {
+//     name: 'John',
+//     lastName: 'Doe'
+// }
 
-var jane = {
-    name: 'Jane',
-    lastName: 'Smith'
-}
+// var jane = {
+//     name: 'Jane',
+//     lastName: 'Smith'
+// }
 
-var mike = {
-    name: 'Mike',
-    lastName: 'Dune'
-}
+// var mike = {
+//     name: 'Mike',
+//     lastName: 'Dune'
+// }
 
-designerQuestion(jane.name);
-teacherQuestion(john.name);
+// designerQuestion(jane.name);
+// teacherQuestion(john.name);
 
-// Another solution: call the two functions at the same time
-interviewQuestion('unknown')(mike.name);
-interviewQuestion('designer')('Joanne');
+// // Another solution: call the two functions at the same time
+// interviewQuestion('unknown')(mike.name);
+// interviewQuestion('designer')('Joanne');
+
+
+
+// Immediately Invoked Function Expressions (IIFE)
+
+// function game() {
+//     var score = (Math.random() * 10);
+//     console.log(score >= 5);
+// }
+
+// game();
+
+// IIFE
+// (function() {
+//     var score = (Math.random() * 10);
+//     console.log(score >= 5); 
+// })();
+
+(function(goodLuck) {
+    var score = (Math.random() * 10);
+    console.log(score >= 5 - goodLuck); 
+})(5);

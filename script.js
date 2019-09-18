@@ -238,28 +238,28 @@
 // retirementGermany(1990);
 // retirementIceland(1990);
 
-function interviewQuestion(job) {
-    var a = ' can you explain what UX is?';
-    var b = 'What subject do you teach ';
-    var c = ' what do you do for a living?';
-    return function(name) {
-        if (job === 'designer') {
-                console.log(name + a);
-        } else if (job === 'teacher') {
-                console.log(b + name + "?");
-        } else {
-                console.log(name + c);
-        }
-    }
-}
+// function interviewQuestion(job) {
+//     var a = ' can you explain what UX is?';
+//     var b = 'What subject do you teach ';
+//     var c = ' what do you do for a living?';
+//     return function(name) {
+//         if (job === 'designer') {
+//                 console.log(name + a);
+//         } else if (job === 'teacher') {
+//                 console.log(b + name + "?");
+//         } else {
+//                 console.log(name + c);
+//         }
+//     }
+// }
 
-var designer = interviewQuestion('designer');
-var teacher = interviewQuestion('teacher');
-var unknown = interviewQuestion('unknown');
+// var designer = interviewQuestion('designer');
+// var teacher = interviewQuestion('teacher');
+// var unknown = interviewQuestion('unknown');
 
-designer('Jane');
-teacher('Mike');
-unknown('John');
+// designer('Jane');
+// teacher('Mike');
+// unknown('John');
 
 // function interviewQuestion(job) {
 //     if (job === 'designer') {
@@ -276,3 +276,69 @@ unknown('John');
 //         }
 //     }
 // }
+
+
+
+// Bind, Call and Apply
+
+// var john = {
+//     name: 'John',
+//     lastName: 'Doe',
+//     age: 26,
+//     job: 'teacher',
+//     presentation: function(style,timeOfDay) {
+//         if (style === 'formal') {
+//             console.log('Good ' + timeOfDay + ' ladies and gentlemen! I\'m ' + this.name + ', I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old.');
+//         } else if (style === 'friendly') {
+//             console.log('Hey, what\'s up? I\'m ' + this.name + ', I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old. Have a nice ' + timeOfDay + '.');
+//         }
+//     }
+// };
+
+// john.presentation('friendly','morning');
+
+// john.presentation('formal','night');
+
+// var emily = {
+//     name: 'Emily',
+//     age: 48,
+//     job: 'librarian'
+// };
+
+// Call
+// john.presentation.call(emily,'formal','evening');
+
+// Apply
+// this won't work because the method is not expecting an array value
+// john.presentation.apply(emily, ['friendly','afternoon']);
+
+// Bind (returns a function)
+// var johnFriendly = john.presentation.bind(john, 'friendly');
+// johnFriendly('morning');
+// johnFriendly('night');
+
+// var emilyFormal = john.presentation.bind(emily,'formal');
+// emilyFormal('evening');
+
+var years = [1990, 1965, 1937, 2005, 1998];
+
+function arrayCalc(arr, fn) {
+    var arrRes = [];
+    for (var i = 1; i < arr.length; i++) {
+        arrRes.push(fn(arr[i]));
+    }
+    return arrRes;
+}
+
+function calculateAge(el) {
+    return 2016 - el;
+}
+
+function isFullAge(limit, el) {
+    return el >= limit;
+}
+
+var ages = arrayCalc(years, calculateAge);
+var fullJapan = arrayCalc(ages, isFullAge.bind(this, 20));
+console.log(ages);
+console.log(fullJapan);

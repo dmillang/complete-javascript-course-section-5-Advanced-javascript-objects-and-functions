@@ -213,7 +213,66 @@
 //     console.log(score >= 5); 
 // })();
 
-(function(goodLuck) {
-    var score = (Math.random() * 10);
-    console.log(score >= 5 - goodLuck); 
-})(5);
+// (function(goodLuck) {
+//     var score = (Math.random() * 10);
+//     console.log(score >= 5 - goodLuck); 
+// })(5);
+
+
+
+// Closures
+
+// function retirement(ageOfRetirement) {
+//     var a = ' years until retirement.';
+//     return function(yearOfBirth) {
+//         var age = 2019 - yearOfBirth;
+//         console.log((ageOfRetirement - age) + a);
+//     }
+// }
+
+// var retirementUS = retirement(66);
+// var retirementGermany = retirement(65);
+// var retirementIceland = retirement(67);
+
+// retirementUS(1990);
+// retirementGermany(1990);
+// retirementIceland(1990);
+
+function interviewQuestion(job) {
+    var a = ' can you explain what UX is?';
+    var b = 'What subject do you teach ';
+    var c = ' what do you do for a living?';
+    return function(name) {
+        if (job === 'designer') {
+                console.log(name + a);
+        } else if (job === 'teacher') {
+                console.log(b + name + "?");
+        } else {
+                console.log(name + c);
+        }
+    }
+}
+
+var designer = interviewQuestion('designer');
+var teacher = interviewQuestion('teacher');
+var unknown = interviewQuestion('unknown');
+
+designer('Jane');
+teacher('Mike');
+unknown('John');
+
+// function interviewQuestion(job) {
+//     if (job === 'designer') {
+//         return function(name) {
+//             console.log(name + ' can you explain what UX is?');
+//         }
+//     } else if (job === 'teacher') {
+//         return function(name) {
+//             console.log('What subject do you teach ' + name + "?");
+//         }
+//     } else {
+//         return function(name) {
+//             console.log(name + ' what do you do for a living?');
+//         }
+//     }
+// }
